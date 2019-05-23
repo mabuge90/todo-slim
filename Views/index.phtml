@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 55px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #8B008B;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+
+            .todos {
+                padding-top: 20px;
+                margin: 0 auto;
+                width: 20%;
+            }
+
+            #uncompleteHeader {
+                font-size: 20px;
+                color: #FFA07A;
+            }
+
+            #completeHeader {
+                font-size: 20px;
+                color: #719e40;
+            }
+            .input-group {
+                width: 30%;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To Do's</h1>
+        <div>A little daily organizer</div>
+
+            <h2>Hello</h2>
+        <form action="/add-tasks" method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Add Todo" aria-label="Recipient's username" aria-describedby="basic-addon2" name="task">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </div>
+            </div>
+        </form>
+
+        <p id="uncompleteHeader">These are your Todo's:</p>
+            <?php ToDo\ViewHelpers\TasksViewHelper::outputUncompleteTasks($uncompletedTasks); ?>
+        <div class="todos">
+            <p id="completeHeader">Completed Todo's</p>
+            <?php ToDo\ViewHelpers\TasksViewHelper::outputCompleteTasks($completedTasks); ?>
+        </div>
+    </body>
+</html>
